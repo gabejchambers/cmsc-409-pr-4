@@ -360,6 +360,8 @@ if __name__ == '__main__':
                         word += c.lower()
                     else:
                         if word:
+                            w = len(word)
+                            wm1 = len(word)-1
                             output += p.stem(word, 0,len(word)-1)
                             word = ''
                         output += c.lower()
