@@ -2,6 +2,7 @@ import re
 import PorterStemmer as Porter
 import numpy as np
 import pandas as pd
+import Cluster
 
 
 def readandprocess():
@@ -71,3 +72,6 @@ if __name__ == '__main__':
     print(feature_vector)
     TDM = createTDM(feature_vector, stemmed_pars)
     csvTDM(TDM)
+    print(TDM)
+    print(TDM[1:,1:].astype(np.float))
+    Cluster.runCluster(TDM[1:,1:].astype(np.float))
