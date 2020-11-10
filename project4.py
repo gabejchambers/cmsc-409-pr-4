@@ -58,20 +58,16 @@ def createTDM(f_v, pars):
 def csvTDM(tdm):
     # np.savetxt("TDM.csv", tdm, delimiter=",")
     df = pd.DataFrame(tdm)
+    print(df)
     df.to_csv('TDM.csv', index=False)
-
 
 
 if __name__ == '__main__':
     p = Porter.PorterStemmer()
     processed_pars = readandprocess()
-    print(processed_pars)
     stemmed_pars = doStemming(p, processed_pars)
-    print(stemmed_pars)
     feature_vector = featureVector(stemmed_pars) #need show feature vector in report
     print(feature_vector)
     TDM = createTDM(feature_vector, stemmed_pars)
     csvTDM(TDM)
-    print(TDM)
-    print(TDM[1:,1:].astype(np.float))
     Cluster.runCluster(TDM[1:,1:].astype(np.float))
